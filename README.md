@@ -18,7 +18,12 @@ Vue.use(VueRouterTransition, VueRouter)
 
 // or
 
-<router-view class="view" transition v-r-transition="{forward: 'slideFromRightToLeft', back: 'slideFromLeftToRight'}" keep-alive></router-view>
+<router-view 
+  class="view" 
+  transition 
+  v-r-transition="{forward: 'slideFromRightToLeft', back: 'slideFromLeftToRight'}" 
+  keep-alive>
+</router-view>
 
 Vue.transition('slideFromRightToLeft', {})
 Vue.transition('slideFromLeftToRight', {})
