@@ -22,5 +22,9 @@ module.exports = {
     resolve: {
       extensions: ['', '.js']
     }
+  },
+  eslint: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: false
   }
 }

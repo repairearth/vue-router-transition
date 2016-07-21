@@ -4,7 +4,7 @@ const DIRECTION = {
   BACK: 'back'
 }
 
-function VueRouterTransition(Vue, VueRouter, {indexPath = '/'} = {}) {
+function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
   const stackHistory = sessionStorage.getItem(HIS_KEY)
   let stack = [indexPath]
 

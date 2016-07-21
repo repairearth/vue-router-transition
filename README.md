@@ -1,5 +1,5 @@
 # vue-router-transition
-A light weight page transition library for vue-router
+A page transition plugin for vue-router 
 
 ## Usage
 
