@@ -12,7 +12,6 @@ Vue.use(VueTransitionAnimate)
 
 // create router
 const router = new VueRouter({
-  history: true,
   saveScrollPosition: true
 })
 
