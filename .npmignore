@@ -30,6 +30,7 @@ build/Release
 
 # Dependency directories
 .idea
+example
 node_modules
 jspm_packages
 

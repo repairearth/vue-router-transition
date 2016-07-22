@@ -1,4 +1,5 @@
 const HIS_KEY = '$$vue_router_history'
+const sessionStorage = window.sessionStorage
 const DIRECTION = {
   FORWARD: 'forward',
   BACK: 'back'
@@ -13,6 +14,8 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
   }
 
   const _ = Vue.util
+  const routerViewDef = Vue.elementDirective('router-view')
+  const originalRouterViewDef = _.extend({}, routerViewDef)
   const _onTransitionValidated = VueRouter.prototype._onTransitionValidated
   const transitionDef =
     // 0.12
@@ -35,14 +38,28 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
         stack.push(path)
       }
 
-      const $$routerTransition = transition.to.$$routerTransition || this.app.$$routerTransition
-
-      if ($$routerTransition) {
-        this.app.$$transition = $$routerTransition[direction]
+      this.app.$$transitionInfo = {
+        direction,
+        routerTransition: transition.to.$$routerTransition
       }
 
-      _onTransitionValidated.apply(this, arguments)
       sessionStorage.setItem(HIS_KEY, JSON.stringify(stack))
+      _onTransitionValidated.apply(this, arguments)
+    }
+  })
+
+  _.extend(routerViewDef, {
+    transition (target, cb) {
+      const self = this
+      const { vm } = this
+      const { $$transitionInfo } = vm.$root
+      const routerTransition = $$transitionInfo.routerTransition || vm.$$routerTransition
+
+      vm.$$transition = routerTransition[$$transitionInfo.direction]
+
+      Vue.nextTick(() => {
+        originalRouterViewDef.transition.call(self, target, cb)
+      })
     }
   })
 
