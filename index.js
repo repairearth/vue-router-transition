@@ -26,16 +26,19 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
   // override vue-router and internal transition directive
   _.extend(VueRouter.prototype, {
     _onTransitionValidated (transition) {
-      const { path } = transition.to
-      const stackIndex = stack.indexOf(path)
+      const { from, to } = transition
+      const fromPath = from.path
+      const toPath = to.path
+      const fromStackIndex = stack.indexOf(fromPath)
+      const toStackIndex = stack.indexOf(toPath)
       let direction
 
-      if (stackIndex > -1) {
-        direction = DIRECTION.BACK
-        stack = stack.slice(0, stackIndex + 1)
+      if (toStackIndex > -1) {
+        direction = toStackIndex > fromStackIndex ? DIRECTION.FORWARD : DIRECTION.BACK
       } else {
         direction = DIRECTION.FORWARD
-        stack.push(path)
+        stack.push(toPath)
+        sessionStorage.setItem(HIS_KEY, JSON.stringify(stack))
       }
 
       this.app.$$transitionInfo = {
@@ -43,7 +46,6 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
         routerTransition: transition.to.$$routerTransition
       }
 
-      sessionStorage.setItem(HIS_KEY, JSON.stringify(stack))
       _onTransitionValidated.apply(this, arguments)
     }
   })

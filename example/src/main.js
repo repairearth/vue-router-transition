@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import VueRouterTransition from 'vue-router-transition/lib'
-import VueRouterTransition from './dev'
+import VueRouterTransition from '../../index'
 import VueTransitionAnimate from 'skyeye-vue-transition-animate'
 import { configRouter } from './route-config'
 
