@@ -1,4 +1,5 @@
 # vue-router-transition
+
 A page transition plugin for vue-router [demo](http://vnot.me/vue-router-transition/)
 
 ## Usage

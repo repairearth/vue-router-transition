@@ -54,14 +54,19 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
     transition (target, cb) {
       const self = this
       const { vm } = this
-      const { $$transitionInfo } = vm.$root
-      const routerTransition = $$transitionInfo.routerTransition || vm.$$routerTransition
 
-      vm.$$transition = routerTransition[$$transitionInfo.direction]
+      if (vm.$$routerTransition) {
+        const { $$transitionInfo } = vm.$root
+        const routerTransition = $$transitionInfo.routerTransition || vm.$$routerTransition
 
-      Vue.nextTick(() => {
+        vm.$$transition = routerTransition[$$transitionInfo.direction]
+
+        Vue.nextTick(() => {
+          originalRouterViewDef.transition.call(self, target, cb)
+        })
+      } else {
         originalRouterViewDef.transition.call(self, target, cb)
-      })
+      }
     }
   })
 
