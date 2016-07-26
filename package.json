@@ -1,6 +1,6 @@
 {
   "name": "vue-router-transition",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A page transition plugin for vue-router",
   "main": "lib/index.js",
   "scripts": {
