@@ -49,7 +49,7 @@ Vue.transition('slideFromLeftToRight', {})
 ```
 
 ## Page level transition
-For page level transition, define custom field '$$routerTransition' in the route config
+For page level transition, define custom field `$$routerTransition` in the route config
 ```js
 '/message': {
   component: require('./views/subroutes/sr2.vue'),
