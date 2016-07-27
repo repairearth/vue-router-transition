@@ -43,7 +43,7 @@ function VueRouterTransition (Vue, VueRouter, {indexPath = '/'} = {}) {
 
       this.app.$$transitionInfo = {
         direction,
-        routerTransition: transition.to.$$routerTransition
+        routerTransition: to.$$routerTransition
       }
 
       _onTransitionValidated.apply(this, arguments)

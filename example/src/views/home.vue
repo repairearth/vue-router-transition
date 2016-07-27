@@ -60,9 +60,4 @@
     line-height: 75px;
     border-radius: 50%;
   }
-  body {
-    font-family: Helvetica, sans-serif;
-    background-color: #fbf9fe;
-    padding-bottom: 50px;
-  }
 </style>
