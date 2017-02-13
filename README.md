@@ -1,9 +1,9 @@
-# vue-router-transition
+# ~~vue-router-transition~~
 
 [![npm](https://img.shields.io/npm/v/vue-router-transition.svg?style=flat)](https://www.npmjs.com/package/vue-router-transition)
 [![npm](https://img.shields.io/npm/dt/vue-router-transition.svg?style=flat)](https://www.npmjs.com/package/vue-router-transition)
 
-A page transition plugin for vue-router [demo](http://vnot.me/vue-router-transition/)
+**【Deprecated】** A page transition plugin for vue-router [demo](http://vnot.me/vue-router-transition/)
 
 ## Usage
 
